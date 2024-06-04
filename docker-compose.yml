@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  frontend:
+    image: ${FRONTEND_IMAGE_NAME}:${FRONTEND_IMAGE_TAG}
+    container_name: ${FRONTEND_CONTAINER_NAME}
+    env_file:
+      - .env
+    build:
+      context: ./frontend
+    ports:
+      - 80:80
+    networks:
+      - rhub-network
+
+  backend:
+    image: ${BACKEND_IMAGE_NAME}:${BACKEND_IMAGE_TAG}
+    container_name: ${BACKEND_CONTAINER_NAME}
+    env_file:
+      - .env
+    build:
+      context: ./backend
+    ports:
+      - 8080:8080
+    networks:
+      - rhub-network
+
+networks:
+  rhub-network:
+    driver: bridge
