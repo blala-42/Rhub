@@ -1,4 +1,4 @@
-
+import "../css/pages/review-edit.css";
 export default function ReviewEdit() {
   return (
     <>

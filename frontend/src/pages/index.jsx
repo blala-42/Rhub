@@ -1,5 +1,6 @@
+import "../css/base/index.css";
 
-export default function Root() {
+export default function Index() {
   return (
     <>
       <div>Hi This is main page</div>

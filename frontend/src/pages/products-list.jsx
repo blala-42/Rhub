@@ -1,4 +1,4 @@
-
+import "../css/pages/products-list.css";
 export default function ProductsList() {
   return (
     <>

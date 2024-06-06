@@ -1,4 +1,4 @@
-
+import "../css/pages/product-detail.css";
 export default function ProductDetail() {
   return (
     <>

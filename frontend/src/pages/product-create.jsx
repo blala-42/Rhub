@@ -1,3 +1,4 @@
+import "../css/pages/review-create.css";
 
 export default function ProductCreate() {
   return (
