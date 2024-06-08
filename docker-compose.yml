@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   frontend:
@@ -22,6 +22,30 @@ services:
       context: ./backend
     ports:
       - 8080:8080
+    networks:
+      - rhub-network
+
+  db:
+    init: true
+    image: postgres:16.1-alpine3.19
+    container_name: ${DATABASE_CONTAINER_NAME}
+    env_file:
+      - .env
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - PGUSER=${POSTGRES_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - 5432:5432
+    volumes:
+      - ${DATABASE_VOLUME}:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
     networks:
       - rhub-network
 
