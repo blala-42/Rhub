@@ -2,6 +2,7 @@
 
 # 스크립트 파일의 디렉토리 위치로 이동
 cd "$(dirname "$0")"
+cd ../backend
 
 # target 디렉토리 비우기
 rm -rf target/*

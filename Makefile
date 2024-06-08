@@ -127,7 +127,7 @@ create:
 
 .PHONY: up # Create and start containers
 up:
-	@./backend/build-script.sh
+	@./.script/build-script.sh
 	${COMPOSE} up -d --build
 
 .PHONY: down # Stop and remove containers, networks
