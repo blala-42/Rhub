@@ -4,13 +4,11 @@ ARG REACT_APP_SERVER
 
 WORKDIR /app
 
-RUN npm install vite -g
-
 COPY package.json .
 COPY yarn.lock .
-# RUN yarn install
+# COPY vite.config.js .
 
-RUN npm install
+RUN yarn
 
 COPY . .
 
@@ -20,4 +18,4 @@ EXPOSE 3000
 RUN apk add --no-cache curl
 
 # ENTRYPOINT ["npm", "run", "dev"]
-ENTRYPOINT ["npm", "run", "dev"]
+ENTRYPOINT ["yarn", "dev"]
