@@ -6,11 +6,9 @@ WORKDIR /app
 
 COPY package.json .
 COPY yarn.lock .
-# COPY vite.config.js .
+COPY vite.config.js .
 
 RUN yarn
-
-COPY . .
 
 EXPOSE 3000
 
