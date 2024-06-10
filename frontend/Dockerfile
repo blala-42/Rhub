@@ -1,20 +1,23 @@
-FROM node:16-alpine3.14 AS builder
+FROM node:18-alpine3.14 AS builder
 
 ARG REACT_APP_SERVER
 
 WORKDIR /app
 
+RUN npm install vite -g
+
+COPY package.json .
+COPY yarn.lock .
+# RUN yarn install
+
+RUN npm install
+
 COPY . .
 
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
-RUN yarn build
+EXPOSE 3000
 
-FROM nginx:alpine
+# curl 설치
+RUN apk add --no-cache curl
 
-COPY --from=builder /app/build /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-EXPOSE 80
-
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+# ENTRYPOINT ["npm", "run", "dev"]
+ENTRYPOINT ["npm", "run", "dev"]
