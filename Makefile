@@ -9,7 +9,7 @@ include .env
 COMPOSE = \
 	docker compose \
 	-p r-hub \
-	-f docker-compose.yml 
+	-f docker-compose.prod.yml 
 
 
 # **************************************************************************** #
