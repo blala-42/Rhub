@@ -1,14 +1,19 @@
-# Base image
-FROM openjdk:21
+FROM openjdk:21 AS builder
 
-# Set the working directory
 WORKDIR /app
 
-# Copy the JAR file from the host system to the container
-COPY ./target/*.jar /app/app.jar
+COPY build-script.sh .
+RUN chmod +x build-script.sh
+COPY . .
 
-# Expose the port the application runs on
+RUN ./build-script.sh
+
+FROM openjdk:21
+
+WORKDIR /app
+
+COPY --from=builder /app/app.jar .
+
 EXPOSE 8080
 
-# Run the application
 CMD ["java", "-jar", "app.jar"]
