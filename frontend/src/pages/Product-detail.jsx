@@ -1,8 +1,8 @@
 import "../css/pages/product-detail.css";
-export default function ProductDetail() {
+export default function productdetail() {
   return (
     <>
-      <div>Hi This is Product Detail page</div>
+      <div>hi this is product detail page</div>
       <h1>상품 페이지야</h1>
     </>
   )

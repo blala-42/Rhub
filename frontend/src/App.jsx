@@ -4,7 +4,6 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Root from "./pages/root";
 import ErrorPage from './pages/error-page';
 import Index from "./pages/index";
-import NavigationBar from "./components/navigation-bar"
 import ProductsList from './pages/products-list';
 import ProductDetail from './pages/Product-detail';
 import ProductCreate from './pages/product-create';
@@ -65,7 +64,6 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <NavigationBar />
       <RouterProvider router={router} />
     </>
   );
